@@ -1,6 +1,7 @@
 project(planning_main)#工程名
 add_subdirectory(pnc_map)
 add_subdirectory(process) #添加两个子目录
+add_subdirectory(show_result)
 
 #将mian.cpp添加为可执行文件
 add_executable(${PROJECT_NAME} planning_main.cpp)
@@ -14,3 +15,18 @@ target_link_libraries(${PROJECT_NAME}
 PUBLIC
 process
 )#让可执行文件链接动态库，不是很懂
+
+target_include_directories(${PROJECT_NAME}
+PUBLIC
+#${CMAKE_SOURCE_DIR}/src/process 这么写也可以但可以通过在第一层设置变量的方式简化路径
+${Show_Result_Dir}#直接调用就好
+)
+
+target_link_libraries(${PROJECT_NAME}
+PUBLIC
+show_result
+)
+target_link_libraries(${PROJECT_NAME}
+PUBLIC
+easyx
+)

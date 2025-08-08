@@ -1,6 +1,6 @@
 #include <iostream>
 #include "pnc_map.h"
-using namespace std;
+using std::cout, std::endl;
 
 void PNC_Map::mapInfo()
 {

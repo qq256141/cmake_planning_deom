@@ -1,6 +1,6 @@
 #include <iostream>
 #include "process.h"
-using namespace std;
+using std::cout, std::endl;
 
 void Process::planProcess()
 {
