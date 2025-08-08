@@ -7,11 +7,21 @@ project(planning
 )#指定使用的语言
 
 set(CMAKE_CXX_STANDARD 17)
-
+enable_testing()#启用测试
 #变量设置
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 set(Process_Dir ${CMAKE_SOURCE_DIR}/src/process)
 set(PNC_Map_Dir ${CMAKE_SOURCE_DIR}/src/pnc_map)
 set(Show_Result_Dir ${CMAKE_SOURCE_DIR}/src/show_result)
 
+#三方库
+set(EIGEN3_INCLUDE_DIR "C:\\compilerc\\eigen-3.4.0")
+list(APPEND CMAKE_MODULE_PATH "${EIGEN3_INCLUDE_DIR}/cmake")
+message("CMAKE_MODULE_PATH = ${CMAKE_MODULE_PATH}")
+find_package(Eigen3 3.4 REQUIRED)
+if(TARGET Eigen3::Eigen)
+    message(STATUS "Found Eigen3 3.4: ${EIGEN3_INCLUDE_DIR}")
+endif()
+
 add_subdirectory(src)
+add_subdirectory(test/map_test)
